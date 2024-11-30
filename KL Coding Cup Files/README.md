@@ -1,1 +1,2 @@
-I only did Silver Stage 1
+# Competition-Related-Stuff
+I only coded Silver Stage 1
