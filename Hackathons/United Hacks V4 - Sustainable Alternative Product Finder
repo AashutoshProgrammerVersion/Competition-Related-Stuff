@@ -1,2 +1,2 @@
 For this hackathon, I made an app called a sustainable product alternative finder that only works for Amazon Website (unfortunately not working fully so still in progress but he main idea is there)
-To us it, you need to install all the necessarily modules and the in te folder containing the file, you must type "streamlit run <file_name>.py" being whatever it is
+To us it, you need to install all the necessarily modules and the in te folder containing the file, you must type "streamlit run <file_name>.py" being whatever it is (make sure to change the file name after you download it)
