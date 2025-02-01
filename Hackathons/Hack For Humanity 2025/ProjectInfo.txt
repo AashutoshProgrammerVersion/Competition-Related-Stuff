@@ -1,3 +1,0 @@
-To run the project, go to the backend and install all the required modules, packages, etc
-Then in the terminal with the backend folder set as the directory, type "npm run dev"
-Also I updated this after the hackathon because I lost the original version after I added some new features but I recovered it some of it from the previous versions of the same folder, I still couldn't recover the AI one
