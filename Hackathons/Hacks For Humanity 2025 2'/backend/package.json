@@ -1,0 +1,40 @@
+{
+  "name": "volunteer-hub-backend",
+  "version": "1.0.0",
+  "description": "Backend for Volunteer Multi Hub",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.x",
+    "@emotion/styled": "^11.x",
+    "@google/generative-ai": "^0.21.0",
+    "@material-ui/core": "^4.x",
+    "@material-ui/icons": "^4.x",
+    "axios": "^1.x",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.x",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.x",
+    "natural": "^8.0.1",
+    "nodemailer": "^6.9.7",
+    "openai": "^4.82.0",
+    "react-loading-skeleton": "^3.x"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "overrides": {
+    "semver": "^7.5.2"
+  }
+}
