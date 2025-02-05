@@ -1,0 +1,1293 @@
+/* Color palette constants */
+:root {
+    --primary-color: #2e5cb8;         /* More accessible blue instead of orange */
+    --primary-dark: #1e3c7b;          /* Darker blue for hover states */
+    --primary-light: #eef2ff;         /* Light blue for backgrounds */
+    --text-dark: #2c3e50;            /* Dark blue-gray for main text */
+    --text-light: #ffffff;           /* White text */
+    --text-muted: #505e6c;           /* Muted text color */
+    --background-light: #ffffff;      /* White background */
+    --background-off: #f8fafc;       /* Off-white background */
+    --error-color: #dc3545;          /* Error red */
+    --success-color: #28a745;        /* Success green */
+}
+
+/* Basic layout and styling for the entire webpage */
+body {
+    font-family: Arial, sans-serif; 
+    /* Sets the main text font to Arial. If Arial isn't available on the user's computer, 
+       it will use any sans-serif font as a backup. Sans-serif fonts don't have little decorative lines at the ends of letters */
+    
+    margin: 0; 
+    /* Removes any space around the edges of the webpage. By default, browsers add some space, 
+       but we're removing it for a cleaner look */
+    
+    padding: 20px; 
+    /* Adds 20 pixels of space inside the webpage's edges. This creates some breathing room 
+       between the content and the edge of the browser window */
+    
+    scroll-padding-bottom: 100px; 
+    /* When users scroll the page, it will leave 100 pixels of extra space at the bottom. 
+       This prevents important content from being hidden behind the pagination controls */
+    
+    height: 100%; 
+    /* Makes the webpage take up the full height of the browser window */
+    
+    overflow-y: auto; 
+    /* Adds a vertical scrollbar when content is taller than the window. 
+       The scrollbar only appears when needed */
+    
+    scroll-snap-type: y proximity; 
+    /* Makes scrolling snap to certain sections smoothly, creating a more polished feel */
+    color: var(--text-dark);
+    background-color: var(--background-off);
+}
+
+/* Styling for the top section (header) of the webpage */
+header {
+    background: linear-gradient(45deg, #da6b09, #ff8f00);
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    color: white; 
+    /* Makes all text in the header white */
+    
+    text-align: center; 
+    /* Centers all text in the header horizontally */
+    background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+}
+
+/* Styling for navigation links */
+nav a {
+    margin: 0 15px; 
+    /* Adds 15 pixels of space to the left and right of each navigation link, 
+       creating even spacing between links */
+    
+    color: white; 
+    /* Makes the navigation links white to contrast with the orange background */
+    
+    text-decoration: none; 
+    /* Removes the underline that browsers usually put under links */
+}
+
+/* Styling for navigation links when the mouse hovers over them */
+nav a:hover {
+    text-decoration: underline; 
+    /* Adds an underline when the mouse pointer moves over a link, 
+       helping users know they can click it */
+}
+
+/* Basic section layout */
+section {
+    margin-top: 20px; 
+    /* Adds space above each main section of the webpage */
+    
+    display: none; 
+    /* Hides all sections by default until they're specifically shown */
+}
+
+#opportunities {
+    display: block; 
+    /* Makes the opportunities section visible by default when page loads */
+}
+
+/* Form styling */
+form {
+    display: flex; 
+    /* Uses a flexible layout system for form elements */
+    
+    flex-direction: column; 
+    /* Stacks form elements vertically instead of horizontally */
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Styling for text inputs and text areas */
+input, textarea {
+    margin-bottom: 10px; 
+    /* Adds space between form elements */
+    
+    padding: 10px; 
+    /* Adds internal space within text boxes and text areas */
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px;
+    transition: all 0.2s ease;
+    color: var(--text-dark);
+    background: var(--background-light);
+}
+
+input:focus, textarea:focus {
+    border-color: #da6b09;
+    box-shadow: 0 0 0 3px rgba(218, 107, 9, 0.1);
+    border-color: var(--primary-color);
+}
+
+/* Basic button styling */
+button {
+    background: linear-gradient(45deg, #da6b09, #ff8f00);
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 2px 10px rgba(218, 107, 9, 0.2);
+    transition: all 0.3s ease;
+    color: white; 
+    /* Makes button text white */
+    
+    padding: 10px; 
+    /* Adds space inside buttons around the text */
+    background: var(--primary-color);
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #ff8f00, #da6b09);
+    box-shadow: 0 4px 15px rgba(218, 107, 9, 0.3);
+    transform: translateY(-2px);
+    background: var(--primary-dark);
+}
+
+/* Pagination controls styling */
+.pagination {
+    display: flex; 
+    /* Uses flexible layout for pagination items */
+    
+    justify-content: center; 
+    /* Centers pagination buttons horizontally */
+    
+    align-items: center; 
+    /* Centers pagination buttons vertically */
+    
+    margin: 20px 0; 
+    /* Adds space above and below pagination */
+    
+    gap: 5px; 
+    /* Adds equal spacing between pagination elements */
+    
+    position: sticky; 
+    /* Makes pagination stick to a position while scrolling */
+    
+    bottom: 20px; 
+    /* Keeps pagination 20 pixels from bottom of viewport */
+    
+    background: rgba(255, 255, 255, 0.9); 
+    /* Semi-transparent white background */
+    
+    padding: 10px; 
+    /* Adds space inside pagination container */
+    
+    border-radius: 8px; 
+    /* Rounds the corners of pagination container */
+    
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    /* Adds subtle shadow for depth */
+    
+    backdrop-filter: blur(5px); 
+    /* Blurs content behind pagination */
+    
+    z-index: 100; 
+    /* Ensures pagination stays on top of other content */
+    
+    transition: transform 0.3s ease, opacity 0.3s ease; 
+    /* Smooth animation when hiding/showing */
+}
+
+.pagination-info {
+    margin: 0 10px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.pagination button {
+    padding: 8px 12px;
+    border: 1px solid #da6b09;
+    background-color: white;
+    color: #da6b09;
+    cursor: pointer;
+    min-width: 40px;
+    height: 40px;
+    margin: 0 2px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.pagination button:hover {
+    background-color: #da6b09;
+    color: white;
+}
+
+.pagination button:not(:disabled):hover {
+    background-color: #da6b09;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.pagination button.active {
+    background-color: #da6b09;
+    color: white;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+.pagination button:disabled {
+    border-color: #ccc;
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination.hiding {
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.filter-status {
+    width: 100%;
+    background-color: #e3f2fd;
+    padding: 15px;
+    margin: 10px 0 20px 0;
+    border-radius: 4px;
+    border-left: 4px solid #2196f3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    background-color: var(--primary-light);
+    border-left: 4px solid var(--primary-color);
+    color: var(--primary-dark);
+}
+
+.filter-status p {
+    margin: 5px 0;
+    color: #1976d2;
+    font-size: 0.9em;
+}
+
+.filter-status p:last-child {
+    color: #666;
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+.no-results {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    margin: 20px 0;
+    color: #666;
+}
+
+/* Update grid layout */
+#opportunityList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Fix card sizing and layout */
+.opportunity-item {
+    display: block; /* Change from flex to block */
+    width: 100%;
+    box-sizing: border-box;
+    break-inside: avoid; /* Prevent cards from breaking across columns */
+}
+
+/* Card layout and styling */
+.opportunity-card {
+    width: 100%; 
+    /* Makes cards take full width of their container */
+    
+    display: flex; 
+    /* Uses flexible layout */
+    
+    flex-direction: column; 
+    /* Stacks card content vertically */
+    
+    background: white; 
+    /* White background for cards */
+    
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    padding: 20px; 
+    /* Adds space inside cards */
+    
+    height: 100%; 
+    /* Makes all cards same height */
+    background: var(--background-light);
+    border: 1px solid rgba(0,0,0,0.08);
+    position: relative; /* Add this to contain absolute elements if any */
+    box-sizing: border-box;
+    margin: 0; /* Remove any margin */
+    min-height: 350px; /* Set minimum height to prevent squishing */
+}
+
+.opportunity-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.card-logo {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+    flex: 0 0 60px; /* Fixed height, don't grow or shrink */
+}
+
+.card-title {
+    font-size: 1.2em;
+    margin: 0 0 10px 0;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.card-description {
+    flex-grow: 1;
+    overflow: hidden;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: #555;
+    color: var(--text-dark);
+    line-height: 1.6;
+    flex: 1 1 auto; /* Allow grow and shrink */
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.card-meta {
+    margin-top: auto;
+    margin-bottom: 15px;
+    flex: 0 0 auto; /* Don't grow or shrink */
+    margin-bottom: 15px;
+}
+
+.card-actions {
+    margin-top: auto;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    flex: 0 0 auto; /* Don't grow or shrink */
+    margin-top: auto;
+    width: 100%;
+}
+
+.view-details {
+    width: 100%;
+    margin-top: auto;
+    padding: 10px;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    color: #666;
+    transition: opacity 0.2s ease;
+}
+
+.error {
+    text-align: center;
+    padding: 20px;
+    color: #d32f2f;
+    background-color: #ffebee;
+    border-radius: 4px;
+    color: var(--error-color);
+    background-color: #fff5f5;
+}
+
+/* Update search functionality styling */
+.search-container {
+    background: var(--background-light);
+    border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    border: 1px solid rgba(0,0,0,0.08);
+}
+
+.search-top {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.ai-section {
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding-top: 15px;
+    margin-top: 10px;
+}
+
+.ai-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.toggle-label {
+    font-size: 0.95em;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.ai-preferences-input {
+    margin-top: 15px;
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.ai-preferences-input.visible {
+    display: block;
+}
+
+.ai-preferences-input label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.ai-preferences-input textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 12px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
+    resize: vertical;
+    font-size: 0.95em;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    transition: all 0.2s ease;
+}
+
+.ai-preferences-input textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+#searchInput {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 8px;
+    font-size: 16px;
+    color: var(--text-dark);
+    background: white;
+}
+
+#searchInput:focus {
+    outline: none;
+    background-color: rgba(0,0,0,0.02);
+}
+
+#searchButton {
+    padding: 10px 24px;
+    background: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    min-width: 100px;
+}
+
+#searchButton:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3); 
+    /* Creates a circle with transparent border */
+    
+    border-radius: 50%; 
+    /* Makes it perfectly round */
+    
+    border-top-color: #fff; 
+    /* Makes top border white */
+    
+    animation: spin 1s ease-in-out infinite; 
+    /* Adds spinning animation */
+}
+
+/* Animation keyframes */
+@keyframes spin {
+    to { 
+        transform: rotate(360deg); 
+        /* Rotates spinner 360 degrees */
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes loading {
+    from {
+        background-position: 200% 0;
+    }
+    to {
+        background-position: -200% 0;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+#filters {
+    margin: 20px 0;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    background: var(--background-light);
+    border: 1px solid rgba(0,0,0,0.08);
+}
+
+select {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    background: white;
+    transition: all 0.2s ease;
+}
+
+select:hover {
+    border-color: #da6b09;
+}
+
+/* Add new styles for details page */
+.opportunity-details {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.opportunity-details-content {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 30px;
+    margin-top: 20px;
+}
+
+.organization-section {
+    margin: 20px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.organization-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.org-logo-large {
+    max-width: 150px;
+    max-height: 80px;
+    object-fit: contain;
+}
+
+.details-section {
+    margin: 30px 0;
+}
+
+.meta-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.meta-item {
+    padding: 10px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.apply-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #da6b09;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.apply-button:hover {
+    background-color: #b85a08;
+}
+
+/* Add new styles for simplified cards */
+.opportunity-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--background-light);
+    border: 1px solid rgba(0,0,0,0.08);
+}
+
+.opportunity-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.card-logo {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.org-logo-small {
+    max-height: 50px;
+    max-width: 120px;
+    object-fit: contain;
+}
+
+.card-title {
+    font-size: 1.2em;
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.card-org {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0 0 15px 0;
+}
+
+.card-description {
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: #555;
+    margin-bottom: 15px;
+    flex-grow: 1;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.card-meta {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.card-type {
+    font-size: 0.8em;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    font-weight: 500;
+}
+
+.card-type.remote {
+    background: #e3f2fd;
+    color: #1565c0;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+}
+
+.card-date {
+    font-size: 0.8em;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background: #f5f5f5;
+    color: #666;
+}
+
+.view-details {
+    background: transparent;
+    color: #da6b09;
+    border: 1px solid #da6b09;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: auto;
+}
+
+.view-details:hover {
+    background: #da6b09;
+    color: white;
+}
+
+/* Add new styles for simplified navigation */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+#authButtons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#authButtons button {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#authButtons button:hover {
+    background: white;
+    color: #da6b09;
+}
+
+#authButtons a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+}
+
+#authButtons span {
+    color: white;
+    margin-right: 10px;
+}
+
+/* Add new styles for tracking features */
+.card-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.track-opportunity {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.track-opportunity.tracked {
+    background: var(--primary-color);
+    color: var(--text-light);
+    border-color: var(--primary-color);
+}
+
+.track-opportunity:hover {
+    background: var(--primary-color);
+    color: var(--text-light);
+    transform: translateY(-2px);
+}
+
+.tracked-opportunity {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.tracked-opportunity:hover {
+    background-color: #f5f5f5;
+}
+
+.tracked-opportunity .opportunity-content {
+    flex: 1;
+    padding: 10px;
+}
+
+.tracked-opportunity h4 {
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+}
+
+.tracked-opportunity p {
+    margin: 5px 0;
+    color: #666;
+}
+
+#activitiesList {
+    display: grid;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Add new profile styles */
+.profile-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-section {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: var(--background-light);
+    border: 1px solid rgba(0,0,0,0.08);
+}
+
+.tracked-count {
+    display: inline-block;
+    background: #da6b09;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    margin-left: 8px;
+    background: var(--primary-dark);
+    color: var(--text-light);
+}
+
+/* Skeleton Loading Animation */
+.skeleton {
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0) 100%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    background: linear-gradient(
+        90deg,
+        var(--background-off) 0%,
+        var(--background-light) 50%,
+        var(--background-off) 100%
+    );
+}
+
+/* Remove these AI-related styles */
+.ai-score,
+.score-badge,
+.ai-reason,
+.search-mode-section,
+.search-mode-toggle,
+.ai-search-fields {
+    display: none;
+}
+
+/* Add loading animation for AI processing */
+.ai-processing {
+    position: relative;
+    opacity: 0.7;
+}
+
+.ai-processing::after {
+    content: "AI is analyzing...";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* Add new styles for AI section */
+.search-mode-section {
+    width: 100%;
+    padding: 20px;
+    background: var(--primary-light);
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.search-mode-section h3 {
+    margin: 0 0 15px 0;
+    color: var(--primary-color);
+    font-size: 1.1em;
+}
+
+.search-mode-toggle {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.toggle-label {
+    font-weight: 500;
+    color: var(--primary-dark);
+}
+
+.ai-search-fields {
+    margin-top: 15px;
+    padding: 15px;
+    background: var(--background-light);
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.ai-search-fields label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.ai-search-fields textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
+    resize: vertical;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.helper-text {
+    margin-top: 8px;
+    font-size: 0.9em;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* AI Toggle Styles */
+.ai-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 15px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Add new styles for AI recommendation elements */
+.skills-match,
+.interests-match {
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: var(--text-dark);
+    padding: 4px 8px;
+    background: var(--primary-light);
+    border-radius: 4px;
+}
+
+.skills-match::before {
+    content: '💪 ';
+}
+
+.interests-match::before {
+    content: '❤️ ';
+}
+
+/* Add styles for skills and interests form */
+.skills-section,
+.interests-section {
+    margin-bottom: 20px;
+}
+
+.skills-section label,
+.interests-section label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+#skillsInterestsForm input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
+    font-size: 0.95em;
+}
+
+#skillsInterestsForm input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+/* Add styles for AI input box */
+.ai-preferences-input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.ai-preferences-input.visible {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.ai-preferences-input textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 12px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
+    font-size: 0.95em;
+    resize: vertical;
+}
+
+.ai-preferences-input .helper-text {
+    color: var(--text-muted);
+    font-size: 0.9em;
+    margin-top: 4px;
+}
+
+/* Add new styles for the additional details */
+.organization-description {
+    margin-top: 15px;
+    padding: 15px;
+    background: var(--background-off);
+    border-radius: 8px;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+.activities-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.activities-list li {
+    display: inline-block;
+    margin: 5px;
+    padding: 4px 12px;
+    background: var(--primary-light);
+    border-radius: 15px;
+    font-size: 0.9em;
+    color: var(--primary-dark);
+}
+
+.requirements-section {
+    margin-top: 30px;
+    padding: 20px;
+    background: var(--background-off);
+    border-radius: 8px;
+}
+
+.requirements-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.audience-details {
+    margin-top: 8px;
+    font-size: 0.95em;
+}
+
+.audience-details p {
+    margin: 5px 0;
+}
+
+.meta-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+    padding: 20px;
+    background: var(--background-off);
+    border-radius: 8px;
+}
+
+.meta-item {
+    padding: 15px;
+    background: var(--background-light);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.meta-item strong {
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* ...existing code... */
+
+.tracked-opportunity {
+    background: var(--background-light);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.08);
+    cursor: pointer;
+}
+
+.tracked-opportunity:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    background-color: var(--primary-light);
+}
+
+.tracked-opportunity .opportunity-content {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.tracked-opportunity h4 {
+    margin: 0 0 10px 0;
+    color: var(--primary-color);
+    font-size: 1.2em;
+}
+
+.tracked-opportunity .organization {
+    color: var(--text-muted);
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+.tracked-opportunity .description {
+    color: var(--text-dark);
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+.tracked-opportunity .meta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.tracked-opportunity .type,
+.tracked-opportunity .date {
+    font-size: 0.85em;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+}
+
+.tracked-opportunity button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    background: transparent;
+    border: 1px solid var(--error-color);
+    color: var(--error-color);
+    transition: all 0.2s ease;
+}
+
+.tracked-opportunity button:hover {
+    background: var(--error-color);
+    color: var(--text-light);
+}
+
+/* ...existing code... */
